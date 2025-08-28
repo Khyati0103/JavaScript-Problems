@@ -1,4 +1,4 @@
-//!Max number in array
+//! rotate one left of elements of array
 // const readline = require('readline');
 // const rl = readline.createInterface({
 //     input: process.stdin,
@@ -7,22 +7,52 @@
 // rl.question("Enter the size of array : ", (size) => {
 //     size = parseInt(size);
 //     let arr = [];
-//     let i = 0;
 
 //     rl.question("Enter the array elements separated by space: ", (elements) => {
 //         arr = elements.split(' ').map(Number);
-//         let max = arr[0];
-//         for (let j = 1; j < arr.length; j++) {
-//             if (arr[j] > max) {
-//                 max = arr[j];
-//             }
+//         let first = arr[0];
+//         for (let i = 1; i < arr.length; i++) {
+//             arr[i - 1] = arr[i];
 //         }
-//         console.log("Max number in array is : ", max);
+//         arr[arr.length - 1] = first;
+//         console.log("Array after rotation is : ", arr);
 //         rl.close();
 //     });
 // });
 
-//! second largest number in array
+//! left rotate by d
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// rl.question("Enter the size of array : ", (size) => {
+//     size = parseInt(size);
+//     let arr = [];
+//     rl.question("Enter the array elements separated by space: ", (elements) => {
+//         arr = elements.split(' ').map(Number);
+//         rl.question("Enter the number of rotations : ", (d) => {
+//             d = parseInt(d);
+//             d = d % size;
+//             let n = arr.length;
+//             let temp = [];
+//             for (let i = 0; i < d; i++) {
+//                 temp.push(arr[i]);
+//             }
+//             for (let i = d; i < arr.length; i++) {
+//                 arr[i - d] = arr[i];
+//             }
+//             for (let i = n - d; i < arr.length; i++) {
+//                 arr[i] = temp[i - (n - d)];
+//             }
+//             console.log("Array after rotation is : ", arr);
+//             rl.close();
+//         });
+//     });
+// });
+
+//! right rotation by 1
 // const readline = require('readline');
 // const rl = readline.createInterface({
 //     input: process.stdin,
@@ -31,50 +61,19 @@
 // rl.question("Enter the size of array : ", (size) => {
 //     size = parseInt(size);
 //     let arr = [];
-
 //     rl.question("Enter the array elements separated by space: ", (elements) => {
 //         arr = elements.split(' ').map(Number);
-//         let Max = -Infinity;        // Initialize Max to the smallest possible value
-//         let secondmax = -Infinity; // Initialize secondmax to the smallest possible value
-//         for (let i = 1; i < arr.length; i++) {
-//             if (arr[i] > Max) {
-//                 secondmax = Max;
-//                 Max = arr[i];
-//             }
-//             else if (arr[i] > secondmax && arr[i] != Max) {
-//                 secondmax = arr[i];
-//             }
-
+//         last = arr[arr.length - 1];
+//         for (let i = arr.length - 1; i > 0; i--) {
+//             arr[i] = arr[i - 1];
 //         }
-//         console.log("Second Max number in array is : ", secondmax);
-//         rl.close();
-//     })
-// });
-
-//!smallest in array 
-// const readline = require('readline');
-// const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-// });
-// rl.question("Enter the size of array : ", (size) => {
-//     size = parseInt(size);
-//     let arr = [];
-
-//     rl.question("Enter the array elements separated by space: ", (elements) => {
-//         arr = elements.split(' ').map(Number);
-//         let smallest = arr[0];
-//         for (let i = 1; i < arr.length; i++) {
-//             if (arr[i] < smallest) {
-//                 smallest = arr[i];
-//             }
-//         }
-//         console.log("Smallest number in array is : ", smallest);
+//         arr[0] = last;
+//         console.log("Array after rotation is : ", arr);
 //         rl.close();
 //     });
 // });
 
-//! second smallest in array
+//! right rotate by d
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
@@ -83,22 +82,23 @@ const rl = readline.createInterface({
 rl.question("Enter the size of array : ", (size) => {
     size = parseInt(size);
     let arr = [];
-
     rl.question("Enter the array elements separated by space: ", (elements) => {
         arr = elements.split(' ').map(Number);
-        let smallest = arr[0];
-        let secondsmallest = Infinity;
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i] < smallest) {
-                secondsmallest = smallest;
-                smallest = arr[i];
+        let temp = [];
+        rl.question("Enter the number of rotations:", (d) => {
+            let n = arr.length;
+            d = d % n;
+            for (let i = n - d; i < n; i++) {
+                temp.push(arr[i]);
             }
-            else if (arr[i] < secondsmallest && arr[i] != smallest) {
-                secondsmallest = arr[i];
+            for (i = n - 1; i >= d; i--) {
+                arr[i] = arr[i - d];
             }
-        }
-        console.log("Second smallest number in array is : ", secondsmallest);
-        rl.close();
-    });
-
-})
+            for (let i = 0; i < d; i++) {
+                arr[i] = temp[i];
+            }
+            console.log("Array after rotation is : ", arr);
+            rl.close();
+        })
+    })
+});
