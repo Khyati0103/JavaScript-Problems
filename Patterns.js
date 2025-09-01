@@ -191,13 +191,39 @@
 // rl.question("Enter the n : ", (n) => {
 //     for (let i = 1; i <= n; i++) {
 //         let row = "";
-//         for (let j = 0; j <= i; j++) {
+//         for (let j = 0; j < i; j++) {
 //             row += String.fromCharCode(65 + j);
 //         }
 //         console.log(row);
 //     }
 //     rl.close();
 // });
+
+// A
+// BC
+// DEF
+// GHIJ
+
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// rl.question("Enter the n : ", (n) => {
+//     let charCode = 65;
+//     for (let i = 1; i <= n; i++) {
+//         let row = "";
+//         for (let j = 0; j < i; j++) {
+//             row += String.fromCharCode(charCode);
+//             charCode++;
+//         }
+//         console.log(row);
+//     }
+//     rl.close();
+// });
+
+
 
 
 
@@ -282,6 +308,7 @@
 //         }
 //         console.log(space + row);
 //     }
+//// Second Half
 //     for (let i = n - 1; i >= 1; i--) {
 //         let row = "";
 //         let space = " ".repeat(n - i);
@@ -328,32 +355,55 @@
 // 4 5 6
 // 7 8 9 10
 
-const readline = require('readline');
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-rl.question("Enter the n : ", (n) => {
-    let num = 1;
-    for (let i = 1; i <= n; i++) {
-        let row = "";
-        for (let j = 1; j <= i; j++) {
-            row += num + " ";
-            num++;
-        }
-        console.log(row);
-    }
-    rl.close();
-});
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+// rl.question("Enter the n : ", (n) => {
+//     let num = 1;
+//     for (let i = 1; i <= n; i++) {
+//         let row = "";
+//         for (let j = 1; j <= i; j++) {
+//             row += num + " ";
+//             num++;
+//         }
+//         console.log(row);
+//     }
+//     rl.close();
+// });
 
-//! Pascal’s triangle
-
+//! Pascal’s triangle  (nCr) = n/1 * n-1/2 * n-2/3 ..... * n-r+1/r
 //    1
 //   1 1
 //  1 2 1
 // 1 3 3 1
 
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
 
+
+// rl.question("Enter the n : ", (n) => {
+//     function nCr(n, r) {
+//         let res = 1;
+//         for (let i = 0; i < r; i++) {
+//             res = res * (n - i) / (i + 1);
+//         }
+//         return res;
+//     }
+
+//     for (let i = 0; i < n; i++) {
+//         let row = " ".repeat(n - i);
+//         for (let j = 0; j <= i; j++) {
+//             row += nCr(i, j) + " "
+//         }
+//         console.log(row);
+//     }
+//     rl.close();
+// });
 
 
 //! Number square with decreasing layers
@@ -363,3 +413,21 @@ rl.question("Enter the n : ", (n) => {
 // 5 4 3 4 5
 // 5 4 4 4 5
 // 5 5 5 5 5
+
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+// rl.question("Enter the n : ", (n) => {
+//     n = parseInt(n);
+//     for (let i = 0; i < n; i++) {
+//         let row = "";
+//         for (let j = 0; j < n; j++) {
+//             let min = Math.min(i, j, n - 1 - i, n - 1 - j);
+//             row += (n - min) + " ";
+//         }
+//         console.log(row);
+//     }
+//     rl.close();
+// });
