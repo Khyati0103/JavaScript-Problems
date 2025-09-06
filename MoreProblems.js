@@ -238,34 +238,137 @@ const rl = readline.createInterface({
 // Input: "I love JS"
 // Output: "I evol SJ"
 
-rl.question("Enter String :", (str) => {
-    words = str.split(" ");
-    let result = "";
-    for (let i = 0; i < words.length; i++) {
-        let word = words[i];
-        let rev = "";
-        for (let j = word.length - 1; j >= 0; j--) {
-            rev += word[j];
-        }
-        result += rev + "  ";
-    }
-    console.log(result.trim());
-    rl.close();
-});
+// rl.question("Enter String :", (str) => {
+//     words = str.split(" ");
+//     let result = "";
+//     for (let i = 0; i < words.length; i++) {
+//         let word = words[i];
+//         let rev = "";
+//         for (let j = word.length - 1; j >= 0; j--) {
+//             rev += word[j];
+//         }
+//         result += rev + "  ";
+//     }
+//     console.log(result.trim());
+//     rl.close();
+// });
+
+//! Method 2
+// rl.question("Enter String :", (str) => {
+//     let word = "";
+//     let result = "";
+//     for (let i = 0; i <= str.length; i++) {
+//         if (i === str.length || str[i] === " ") {
+//             let rev = "";
+//             for (let j = word.length - 1; j >= 0; j--) {
+//                 rev += word[j];
+//             }
+//             result += rev + " ";
+//             word = "";
+//         }
+//         else {
+//             word += str[i];
+//         }
+//     }
+//     console.log(result.trim());
+//     rl.close();
+// })
+
+// rl.question("Enter string : ", (str) => {
+//     let words = str.split(" ");
+//     let result = "";
+//     for (let i = 0; i < words.length; i++) {
+//         let word = words[i];
+//         let rev = "";
+//         for (let j = word.length - 1; j >= 0; j--) {
+//             rev += word[j];
+//         }
+//         result += rev + " ";
+//     }
+//     console.log(result);
+//     rl.close();
+// })
+
 
 //? 4. Find character frequency
 // Input: "aabbc"
 // Output: a → 2, b → 2, c → 1
 
+// rl.question("Enter String : ", (str) => {
+// function countFrequency(str) {
+//     let fq = {};
+//     for (let ch of str) {
+//         fq[ch] = (fq[ch] || 0) + 1;
+//     }
+//     output = Object.entries(fq)
+//     return output;
+// }
+// console.log(countFrequency(str));
+
+//     let fq = {};
+//     for (let ch of str) {
+//         fq[ch] = (fq[ch] || 0) + 1;
+//     }
+//     let result = "";
+//     for (let ch in fq) {
+//         result += ch + " -> " + fq[ch] + ", ";
+//     }
+//     console.log(result.slice(0,-2));
+
+//     rl.close();
+// });
+
 //? 5. Remove duplicate characters
 // Input: "programming"
 // Output: "progamin"
+
+// rl.question("Enter String : ", (str) => {
+//     function duplicateCharacter(str) {
+//         //     return [...new Set(str)].join("");
+//         let fq = {};
+//         let result = "";
+//         for (let ch of str) {
+//             if (!fq[ch]) {
+//                 result += ch;
+//                 fq[ch] = 1;
+//             }
+//         }
+//         return result;
+//     }
+//     console.log(duplicateCharacter(str));
+//     rl.close();
+// })
 
 // 🔹 Number Problems
 
 //? 1. Reverse a number
 // Input: 12345
 // Output: 54321
+
+//todo Without converting into array
+// rl.question("Enter Number : ", (n) => {
+//     let result = "";
+//     while (n > 0) {
+//         let digit = n % 10;
+//         result += digit;
+//         n = Math.floor(n / 10);
+//     }
+//     console.log(result);
+//     rl.close();
+// })
+
+// //todo converting into array;
+// rl.question("Enter Number :", (n) => {
+//     let num = n.toString().split("").map(Number);
+//     let result = [];
+//     for (let i = num.length - 1; i >= 0; i--) {
+//         result.push(num[i]);
+//     }
+//     console.log(result.join(""));
+//     rl.close();
+// })
+
+
 
 //? 2. Check if number is palindrome
 // Input: 121
@@ -274,12 +377,48 @@ rl.question("Enter String :", (str) => {
 // Input: 123
 // Output: Not Palindrome
 
+// rl.question("Enter Number : ", (num) => {
+//     let n = num;
+//     let rev = "";
+//     while (num > 0) {
+//         rev = rev * 10 + (num % 10);
+//         num = Math.floor(num / 10);
+//     }
+//     if (n == rev) {
+//         console.log("Palindrome.");
+//     }
+//     else {
+//         console.log("Not Palindrome.");
+//     }
+//     rl.close();
+// });
+
 //? 3. Armstrong number
 // Input: 153 → 1³ + 5³ + 3³ = 153
 // Output: Armstrong
 
 // Input: 123
 // Output: Not Armstrong
+
+// rl.question("Enter number : ", (num) => {
+//     num = Number(num);
+//     let n = num;
+//     let length = Math.floor(Math.log10(num)) + 1;
+//     let rev = 0;
+//     while (num > 0) {
+//         let digit = num % 10;
+//         rev += Math.pow(digit, length);
+//         num = Math.floor(num / 10);
+//     }
+//     if (n === rev) {
+//         console.log("Amstrong.");
+//     }
+//     else {
+//         console.log("Not Armstrong.")
+//     }
+//     rl.close();
+// })
+
 
 //? 4. Prime number check
 // Input: 7 → Divisible only by 1 and 7
@@ -288,10 +427,76 @@ rl.question("Enter String :", (str) => {
 // Input: 8 → Divisible by 2, 4
 // Output: Not Prime
 
+// rl.question("Enter number : ", (num) => {
+//     num = Number(num);
+//     if (num === 1) {
+//         console.log("Not Prime.");
+//         rl.close();
+//         return;
+//     }
+//     let ispalindrome = true;
+//     for (let i = 2; i <= Math.sqrt(num); i++) {
+//         if (num % i === 0) {
+//             ispalindrome = false;
+//             break;
+//         }
+//         else {
+//             ispalindrome = true;
+//         }
+//     }
+
+//     if (ispalindrome === true) {
+//         console.log("Prime.");
+//     }
+//     else {
+//         console.log("Not Prime.");
+//     }
+//     rl.close();
+// })
+
+
 // ?5. Factorial & Fibonacci series
 // Factorial of 5 = 5 × 4 × 3 × 2 × 1 = 120
 
-//? Fibonacci (n=6) = 0 1 1 2 3 5i
+// rl.question("Enter number :", (num) => {
+//     num = Number(num);
+//     function factorial(num) {
+//         let fact = 1;
+//         for (let i = 1; i <= num; i++) {
+//             fact *= i;
+//         }
+//         return fact;
+//     }
+//     console.log(factorial(num) );
+//     rl.close();
+// })
+
+//? Fibonacci (n=6) = 0 1 1 2 3 5
+
+// rl.question("Enter number :", (num) => {
+//     num = Number(num);
+//     let first = 0;
+//     let second = 1;
+//     let result = "";
+//     for (let i = 1; i <= num; i++) {
+//         result += first + " ";
+//         let third = first + second;
+//         first = second;
+//         second = third;
+//     }
+//     console.log(result);
+//     rl.close();
+// })
+
+// rl.question("Enter number :", (num) => {
+//     num = Number(num);
+//     let result = [0, 1];
+//     for (let i = 2; i <= num; i++) {
+//         result[i] = result[i - 1] + result[i - 2];
+//     }
+//     console.log(result.join(" "));
+//     rl.close();
+// })
 
 // 🔹 Frequency & Array-Based
 
@@ -299,17 +504,109 @@ rl.question("Enter String :", (str) => {
 // Input: [1,2,2,3,3,3,4,4,4,4,5]
 // Output: 3 (since 4 → 4 times, 3 → 3 times)
 
+// rl.question("Enter Array : ", (elements) => {
+//     arr = elements.split(" ").map(Number);
+//     function secondHighestFrequency(arr) {
+//         let fq = {};
+//         for (let element of arr) {
+//             fq[element] = (fq[element] || 0) + 1;
+//         }
+//         let sorted = Object.entries(fq).sort((a, b) => b[1] - a[1]);
+//         if (sorted.length < 2) {
+//             return `No Second highest element.`;
+//         }
+//         let highestfrequency = sorted[0][1];
+//         let secondHighestFrequency = null;
+//         for (let i = 0; i < sorted.length; i++) {
+//             if (sorted[i][1] < highestfrequency) {
+//                 secondHighestFrequency = sorted[i][1];
+//                 break;
+//             }
+//         }
+//         if (secondHighestFrequency === null) return "No second-highest frequency.";
+
+//         let result = sorted.filter(([key, value]) => value === secondHighestFrequency).map(([key, value]) => `${key} -> ${value}`);
+//         return `Second Highest Frequency : ${result.join(", ")} `;
+//     }
+//     console.log(secondHighestFrequency(arr));
+//     rl.close();
+// })
+
+
+
 //? 2. Find First Non-Repeating Element
 // Input: [1,2,2,1,3,4,3]
 // Output: 4
+
+// rl.question(" Enter array :", (elements) => {
+// function firstNonRepeatedelement(elements) {
+//     for (let element of elements) {
+//         if (elements.indexOf(element) === elements.lastIndexOf(element)) {
+//             return element;
+//             break;
+//         }
+//     }
+// }
+
+//     function firstNonRepeatedelement(elements) {
+//         let fq = {};
+//         for (let num of elements) {
+//             fq[num] = (fq[num] || 0) + 1;
+//         }
+//         let result = [];
+//         for (let num of elements) {
+//             if (fq[num] === 1) {
+//                 return num;
+//                 break;
+//             }
+//         }
+//     }
+
+//     console.log(firstNonRepeatedelement(elements));
+//     rl.close();
+// })
+
+//  function secondNonRepeatedelement(elements) {
+//         let fq = {};
+//         for (let num of elements) {
+//             fq[num] = (fq[num] || 0) + 1;
+//         }
+//         let result = [];
+//         for (let num of elements) {
+//             if (fq[num] === 1) {
+//                 result.push(num);
+//             }
+//         }
+//         return result.length >= 2 ? result[1] : null;
+//     }
+
+//     console.log(secondNonRepeatedelement(elements));
+
 
 //? 3. Find Majority Element (> n/2 times)
 // Input: [3,3,4,2,3,3,5,3]
 // Output: 3
 
+
+
 //? 4. Missing Number in 1 to n
 // Input: [1,2,4,5,6], n = 6
 // Output: 3
+
+// rl.question("Enter Array :", (elements) => {
+//     arr = elements.split(" ").map(Number);
+//     rl.question("Enter n :", (num) => {
+//         let n = Number(num);
+//         let expectedSum = (n * (n + 1)) / 2;
+//         let actualsum = 0;
+//         for (let i = 0; i < arr.length; i++) {
+//             actualsum += arr[i];
+//         }
+//         let missingNumber = expectedSum - actualsum;
+//         console.log(`Missing Number is : ${missingNumber}`);
+//         rl.close();
+//     });
+// });
 
 //? 5. Find Pair with Given Sum (target = 10)
 // Input: [2,4,6,3,7]
@@ -320,6 +617,47 @@ rl.question("Enter String :", (str) => {
 //? 1. First Non-Repeating Character
 // Input: "swiss"
 // Output: "w"
+//! also can compare str.indexOf(ch)===str.lastIndexOf(ch){
+//! return ch ;
+//! break }
+
+// rl.question("Enter string :", (str) => {
+//     function firstNonRepeatedChar(str) {
+//         let fq = {};
+//         for (let ch of str) {
+//             fq[ch] = (fq[ch] || 0) + 1;
+//         }
+//         for (let ch of str) {
+//             if (fq[ch] === 1) {
+//                 return ch;
+//                 break;
+//             }
+//         }
+//     }
+//     console.log(firstNonRepeatedChar(str));
+//     rl.close();
+// })
+
+//! second non repeating character
+//! break }
+
+// rl.question("Enter string :", (str) => {
+//     function secondNonRepeatedChar(str) {
+//         let fq = {};
+//         for (let ch of str) {
+//             fq[ch] = (fq[ch] || 0) + 1;
+//         }
+//         let result = [];
+//         for (let ch of str) {
+//             if (fq[ch] === 1) {
+//                 result.push(ch);
+//             }
+//         }
+//         return result.length >= 2 ? result[1] : null;
+//     }
+//     console.log(secondNonRepeatedChar(str));
+//     rl.close();
+// })
 
 //? 2. Check if String is Pangram (contains all letters a–z)
 // Input: "The quick brown fox jumps over the lazy dog"
@@ -329,6 +667,22 @@ rl.question("Enter String :", (str) => {
 // Input: "I love programming in JavaScript"
 // Output: "programming"
 
+rl.question("Enter String : ", (str) => {
+    function longestWord(str) {
+        let words = str.split(" ");
+        let longest = "";
+        for (let word of words) {
+            if (word.length > longest.length) {
+                longest = word;
+            }
+        }
+        return longest;
+    }
+    console.log(longestWord(str));
+    rl.close();
+})
+
+
 //? 4. Remove All Duplicates but Keep Order
 // Input: "banana"
 // Output: "ban"
@@ -337,11 +691,30 @@ rl.question("Enter String :", (str) => {
 // Input: "success"
 // Output: "s" (appears 3 times)
 
+
+
 // 🔹 Number-Based
 
 //? 1. Sum of Even & Odd Numbers
 // Input: [1,2,3,4,5,6]
 // Output: Even Sum = 12, Odd Sum = 9
+
+// rl.question("Enter array : ", (elements) => {
+//     let arr = elements.split(" ").map(Number);
+//     let evenSum = 0;
+//     let oddSum = 0;
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] % 2 === 0) {
+//             evenSum += arr[i];
+
+//         }
+//         else {
+//             oddSum += arr[i];
+//         }
+//     }
+//     console.log(`Even sum is ${evenSum} and odd sum is ${oddSum}.`);
+//     rl.close();
+// })
 
 //? 2. Find GCD & LCM of 12 and 18
 // Output: GCD = 6, LCM = 36
@@ -350,13 +723,67 @@ rl.question("Enter String :", (str) => {
 // Input: 98765
 // Output: 5
 
+// rl.question("Enter number :", (num) => {
+//     num = Number(num);
+//     //todo Method 1
+//     // let digitCount = Math.floor(Math.log10(num)) + 1;
+//     // console.log(digitCount);
+//     //todo Method
+//     let digitCount = 0;
+//     while (num > 0) {
+//         let digit = num % 10;
+//         digitCount += 1;
+//         num = Math.floor(num / 10);
+//     }
+//     console.log(digitCount);
+//     rl.close();
+// })
+
 //? 4. Sum of Digits
 // Input: 1234
 // Output: 10
 
+// rl.question("Enter number :", (num) => {
+//     num = Number(num);
+//     let sum = 0;
+//     while (num > 0) {
+//         let digit = num % 10;
+//         sum += digit;
+//         num = Math.floor(num / 10);
+//     }
+//     console.log(sum);
+//     rl.close();
+// })
+
+
 //? 5. Strong Number Check (sum of factorial of digits = number)
 // Input: 145 → 1! + 4! + 5! = 145
 // Output: Strong Number
+
+// rl.question("Enter number :", (num) => {
+//     num = Number(num);
+//     n = num;
+//     let sum = 0;
+//     function factorial(digit) {
+//         let fact = 1;
+//         for (let i = 1; i <= digit; i++) {
+//             fact *= i;
+//         }
+//         return fact;
+//     }
+//     while (num > 0) {
+//         let digit = num % 10;
+//         sum += factorial(digit);
+//         num = Math.floor(num / 10);
+//     }
+//     if (n === sum) {
+//         console.log("Strong Number.")
+//     }
+//     else {
+//         console.log("Not Strong Number.");
+//     }
+//     rl.close();
+// })
 
 // 🔹 Pattern Problems
 
@@ -368,6 +795,17 @@ rl.question("Enter String :", (str) => {
 // * * * *
 // * * * * *
 
+// rl.question("Enter n : ", (n) => {
+//     for (let i = 1; i <= n; i++) {
+//         let row = "";
+//         for (let j = 1; j <= i; j++) {
+//             row += "*" + " ";
+//         }
+//         console.log(row.trim());
+//     }
+//     rl.close();
+// })
+
 
 //? 2. Inverted Triangle (n=5)
 
@@ -376,6 +814,18 @@ rl.question("Enter String :", (str) => {
 // * * *
 // * *
 // *
+
+// rl.question("Enter n : ", (n) => {
+//     for (let i = n; i > 0; i--) {
+//         let row = "";
+//         for (let j = 1; j <= i; j++) {
+//             row += "*" + " ";
+//         }
+//         console.log(row.trim());
+//     }
+//     rl.close();
+// })
+
 
 
 //? 3. Pyramid (n=5)
@@ -386,6 +836,18 @@ rl.question("Enter String :", (str) => {
 //  * * * *
 // * * * * *
 
+// rl.question("Enter n :", (n) => {
+//     for (let i = 1; i <= n; i++) {
+//         let row = "";
+//         let space = " ".repeat(n - i);
+//         for (let j = 1; j <= i; j++) {
+//             row += "* ";
+//         }
+//         console.log(space + row.trim());
+//     }
+//     rl.close();
+// })
+
 
 //? 4. Number Triangle (n=5)
 
@@ -395,6 +857,17 @@ rl.question("Enter String :", (str) => {
 // 1 2 3 4
 // 1 2 3 4 5
 
+// rl.question("Enter n :", (n) => {
+//     for (let i = 1; i <= n; i++) {
+//         let row = "";
+//         for (let j = 1; j <= i; j++) {
+//             row += j + " ";
+//         }
+//         console.log(row);
+//     }
+//     rl.close();
+// });
+
 
 //? 5. Palindrome Number Pyramid (n=5)
 
@@ -403,3 +876,18 @@ rl.question("Enter String :", (str) => {
 //   12321
 //  1234321
 // 123454321
+
+// rl.question("Enter n :", (n) => {
+//     for (let i = 1; i <= n; i++) {
+//         let row = "";
+//         space = " ".repeat(n - i);
+//         for (let j = 1; j <= i; j++) {
+//             row += j;
+//         }
+//         for (let j = i - 1; j > 0; j--) {
+//             row += j;
+//         }
+//         console.log(space + row);
+//     }
+//     rl.close();
+// });
