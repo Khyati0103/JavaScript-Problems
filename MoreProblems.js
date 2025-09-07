@@ -587,6 +587,21 @@ const rl = readline.createInterface({
 // Input: [3,3,4,2,3,3,5,3]
 // Output: 3
 
+// rl.question("Enter Array :", (elements) => {
+//     elements = elements.split(" ").map(Number);
+//     function majorityElement(elements) {
+//         let fq = {};
+//         for (num of elements) {
+//             fq[num] = (fq[num] || 0) + 1;
+//         }
+//         let sorted = Object.entries(fq).sort((a, b) => b[1] - a[1]);
+//         let majorityFrequency = sorted[0][1];
+//         result = sorted.filter(([key, value]) => value === majorityFrequency).map(([key, value]) => `${key} -> ${value}`);
+//         return `Majority elements is ${result.join(", ")}`;
+//     }
+//     console.log(majorityElement(elements));
+//     rl.close();
+// });
 
 
 //? 4. Missing Number in 1 to n
@@ -611,6 +626,39 @@ const rl = readline.createInterface({
 //? 5. Find Pair with Given Sum (target = 10)
 // Input: [2,4,6,3,7]
 // Output: (4,6) or (3,7)
+
+// rl.question("Enter Array :", (elements) => {
+//     let arr = elements.split(" ").map(Number);
+//     rl.question("Enter target :", (target) => {
+//         target = Number(target);
+//         arr = arr.sort((a, b) => a - b);
+//         let leftPointer = 0;
+//         let rightPointer = arr.length - 1;
+//         let pairs = [];
+//         while (leftPointer < rightPointer) {
+//             let sum = arr[leftPointer] + arr[rightPointer];
+//             if (sum == target) {
+//                 // console.log(`Pair found : (${arr[leftPointer]}, ${arr[rightPointer]})`);
+//                 // break;
+//                 pairs.push([arr[leftPointer], arr[rightPointer]]);
+//                 leftPointer++;
+//                 rightPointer--;
+//             }
+//             else if (sum < target) {
+//                 leftPointer++;
+//             }
+//             else if (sum > target) {
+
+//             }
+//             else {
+//                 console.log("Pair not found");
+//             }
+//         }
+//         console.log(pairs.length > 0 ? `Pairs are : ${pairs.map(pair => `(${pair[0]}, ${pair[1]})`).join(", ")}` : "No pairs found.");
+//         console.log(pairs);
+//         rl.close();
+//     });
+// });
 
 // 🔹 String-Based
 
@@ -662,36 +710,82 @@ const rl = readline.createInterface({
 //? 2. Check if String is Pangram (contains all letters a–z)
 // Input: "The quick brown fox jumps over the lazy dog"
 // Output: True
+// "Pack my box with five dozen liquor jugs" =>true
+
+// rl.question("Enter String :", (str) => {
+//     function isPangram(str) {
+//         str = str.toLowerCase();
+//         let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+//         for (let ch of alphabet) {
+//             if (!str.includes(ch)) {
+//                 return false;
+//             }
+//         }
+//         return true;
+//     }
+//     console.log(isPangram(str));
+//     rl.close();
+// })
 
 //? 3. Find Longest Word in Sentence
 // Input: "I love programming in JavaScript"
 // Output: "programming"
 
-rl.question("Enter String : ", (str) => {
-    function longestWord(str) {
-        let words = str.split(" ");
-        let longest = "";
-        for (let word of words) {
-            if (word.length > longest.length) {
-                longest = word;
-            }
-        }
-        return longest;
-    }
-    console.log(longestWord(str));
-    rl.close();
-})
+// rl.question("Enter String : ", (str) => {
+//     function longestWord(str) {
+//         let words = str.split(" ");
+//         let longest = "";
+//         for (let word of words) {
+//             if (word.length > longest.length) {
+//                 longest = word;
+//             }
+//         }
+//         return longest;
+//     }
+//     console.log(longestWord(str));
+//     rl.close();
+// })
 
 
 //? 4. Remove All Duplicates but Keep Order
 // Input: "banana"
 // Output: "ban"
 
+// rl.question("Enter String : ", (str) => {
+//     function removeDuplicates(str) {
+//         // return [...new Set(str)].join("");
+//         let fq = {};
+//         let result = "";
+//         for (let ch of str) {
+//             if (!fq[ch]) {
+//                 result += ch;
+//                 fq[ch] = 1;
+//             }
+//         }
+//         return result;
+//     }
+//     console.log(removeDuplicates(str));
+//     rl.close();
+// });
+
 //? 5. Find Most Frequent Character
 // Input: "success"
 // Output: "s" (appears 3 times)
 
-
+// rl.question("Enter String : ", (str) => {
+//     function mostFrequentChar(str) {
+//         let fq = {};
+//         for (let ch of str) {
+//             fq[ch] = (fq[ch] || 0) + 1;
+//         }
+//         let sorted = Object.entries(fq).sort((a, b) => b[1] - a[1]);
+//         let mostFrequency = sorted[0][1];
+//         result = sorted.filter(([key, value]) => value === mostFrequency).map(([key, value]) => `${key} -> ${value}`);
+//         return `Most Frequent character is ${result.join(", ")}`;
+//     }
+//     console.log(mostFrequentChar(str));
+//     rl.close();
+// });
 
 // 🔹 Number-Based
 
@@ -718,6 +812,33 @@ rl.question("Enter String : ", (str) => {
 
 //? 2. Find GCD & LCM of 12 and 18
 // Output: GCD = 6, LCM = 36
+
+rl.question("Enter two numbers : ", (elements) => {
+    let [a, b] = elements.split(" ").map(Number);
+    let gcd = 1;
+    let tmp;
+    if (a > b) {
+        tmp = a;
+        a = b;
+        b = tmp;
+    }
+    for (let i = 1; i <= b; i++) {
+        if (a % i === 0 && b % i === 0) {
+            gcd = i;
+        }
+    }
+    //     let lcm = 1;
+    //     for (let i = 1; i < x * y; i++) {
+    //         if (i%x == 0 && i%y == 0) {
+    //
+    //             break;
+    //         }
+    //     }   
+    let lcm = (a * b) / gcd;
+    console.log(`LCM is ${lcm} and GCD is ${gcd}.`);
+    rl.close();
+});
+
 
 //? 3. Count Digits in Number
 // Input: 98765
