@@ -403,18 +403,18 @@ const rl = readline.createInterface({
 //?     3 3
 //?       4
 
-rl.question("Enter the number of rows: ", (num) => {
-    num = parseInt(num);
-    for (let i = 1; i <= num; i++) {
-        let rows = "";
-        let space = " ".repeat(i - 1);
-        for (let j = num - i + 1; j >= 1; j--) {
-            rows += i ;
-        }
-        console.log(space + rows.trim());
-    }
-    rl.close();
-});
+// rl.question("Enter the number of rows: ", (num) => {
+//     num = parseInt(num);
+//     for (let i = 1; i <= num; i++) {
+//         let rows = "";
+//         let space = " ".repeat(i - 1);
+//         for (let j = num - i + 1; j >= 1; j--) {
+//             rows += i ;
+//         }
+//         console.log(space + rows.trim());
+//     }
+//     rl.close();
+// });
 
 
 //?       1
@@ -422,23 +422,122 @@ rl.question("Enter the number of rows: ", (num) => {
 //?   3 3 3
 //? 4 4 4 4
 
+
+// rl.question("Enter the number of rows: ", (num) => {
+//     num = parseInt(num);
+//     for (let i = 1; i <= num; i++) {
+//         let rows = "";
+//         let space = " ".repeat(num - i);
+//         for (let j = 1; j <= i; j++) {
+//             rows += i;
+//         }
+//         console.log(space + rows.trim());
+//     }
+//     rl.close();
+// });
+
 //? 1 2 3 4
 //?   2 3 4
 //?     3 4
 //?       4
+
+// rl.question("Enter the number of rows: ", (num) => {
+//     num = parseInt(num);
+//     for (let i = 1; i <= num; i++) {
+//         let rows = "";
+//         let space = "  ".repeat(i - 1);
+//         for (let j = i; j <= num; j++) {
+//             rows += j + " ";
+//         }
+//         console.log(space + rows.trim());
+//     }
+//     rl.close();
+// });
 
 //?       1
 //?     2 3
 //?   4 5 6
 //? 7 8 9 10
 
+// rl.question("Enter the number of rows: ", (num) => {
+//     num = parseInt(num);
+//     let count = 1;
+//     for (let i = 1; i <= num; i++) {
+//         let rows = "";
+//         let space = "  ".repeat(num - i);
+//         for (let j = 1; j <= i; j++) {
+//             rows += count + " ";
+//             count++;
+//         }
+//         console.log(space + rows.trim());
+//     }
+//     rl.close();
+// });
+
 //?       A
 //?     B C
 //?   D E F
 //? G H I J
 
+// rl.question("Enter the number of rows: ", (num) => {
+//     num = parseInt(num);
+//     let count = 1;
+//     for (let i = 1; i <= num; i++) {
+//         let rows = "";
+//         let space = "  ".repeat(num - i);
+//         for (let j = 1; j <= i; j++) {
+//             rows += String.fromCharCode(64 + count) + " ";
+//             count++;
+//         }
+//         console.log(space + rows.trim());
+//     }
+//     rl.close();
+// });
 
 //?    1
 //?   121
 //?  12321
 //? 1234321
+
+// rl.question("Enter the number of rows: ", (num) => {
+//     num = parseInt(num);
+//     for (let i = 1; i <= num; i++) {
+//         let rows = "";
+//         let space = "  ".repeat(num - i);
+//         for (let j = 1; j <= i; j++) {
+//             rows += j + " ";
+//         }
+//         for (let j = i - 1; j >= 1; j--) {
+//             rows += j + " ";
+//         }
+//         console.log(space + rows.trim());
+//     }
+//     rl.close();
+// });
+
+
+//? 1 2 3 4 5 5 4 3 2 1
+//? 1 2 3 4 * * 4 3 2 1
+//? 1 2 3 * * * * 3 2 1
+//? 1 2 * * * * * * 2 1
+//? 1 * * * * * * * * 1
+
+rl.question("Enter the number of rows: ", (num) => {
+    num = parseInt(num);
+    for (let i = 1; i <= num; i++) {
+        let rows = "";
+        // let space = "  ".repeat(num - i);
+        for (let j = 1; j <= num - i + 1; j++) {
+            rows += j + " ";
+        }
+        for (let j = 1; j <= (2 * i - 2); j++) {
+            rows += "*" + " ";
+        }
+
+        for (let j = num - i + 1; j >= 1; j--) {
+            rows += j + " ";
+        }
+        console.log(rows.trim());
+    }
+    rl.close();
+});
