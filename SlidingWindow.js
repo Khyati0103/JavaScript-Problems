@@ -154,6 +154,43 @@ const rl = readline.createInterface({
 //? Output: 2
 //? Explanation: Subarrays [3, 4] and [4, 5] have sums greater than 5.
 
+// rl.question("Enter array :", (elements) => {
+//     arr = elements.split(" ").map(Number);
+//     rl.question("Enter k : ", (k) => {
+//         k = Number(k);
+//         rl.question("Enter X : ", (x) => {
+//             x = Number(x);
+//             let count = 0;
+//             let sum = 0;
+//             let l = 0;
+//             let r = k - 1;
+//             let subArrays = [];
+//             for (let i = l; i <= r; i++) {
+//                 sum += arr[i];
+//             }
+//             startIndex = l;
+//             // Check the first window
+//             if (sum > x) {
+//                 count++;
+//                 subArrays.push(arr.slice(l, r + 1));
+//             }
+//             while (r < arr.length - 1) {
+//                 sum = sum - arr[l];
+//                 l++;
+//                 r++;
+//                 sum = sum + arr[r];
+//                 if (sum > x) {
+//                     count++;
+//                     startIndex = l;
+//                     subArrays.push(arr.slice(l, r + 1));
+//                 }
+//             }
+//             console.log(`Total subarrays greater than ${x} is ${count} and subarrays are:`, subArrays);
+//             rl.close();
+//         });
+//     });
+// });
+
 
 
 //? 4. Max of Each Subarray of Size K
@@ -166,10 +203,28 @@ const rl = readline.createInterface({
 //? Input: arr = [1, 3, -1, -3, 5, 3, 6, 7], k = 3
 //? Output: [3, 3, 5, 5, 6, 7]
 
+// rl.question("Enter Array :", (elements) => {
+//     arr = elements.split(" ").map(Number);
+//     rl.question("Enter k : ", (k) => {
+//         let l = 0;
+//         let r = k - 1;
+//         let maxElements = [];
+//         while (r < arr.length) {
+//             let max = arr[l];
+//             for (let i = l; i <= r; i++) {
+//                 if (arr[i] > max) {
+//                     max = arr[i];
+//                 }
+//             }
+//             maxElements.push(max);
+//             l++;
+//             r++;
+//         }
+//         console.log(maxElements);
+//         rl.close();
+//     });
+// });
 
-//? Hint:
-
-//? This is slightly trickier: usually solved with a deque for O(n) time.
 
 //? 5. First Negative Number in Every Window of Size K
 
@@ -180,4 +235,158 @@ const rl = readline.createInterface({
 
 //? Input: arr = [12, -1, -7, 8, -15, 30, 16, 28], k = 3
 //? Output: [-1, -1, -7, -15, -15, 0]
+
+// rl.question("Enter Array :", (elements) => {
+//     arr = elements.split(" ").map(Number);
+//     rl.question("Enter K : ", (k) => {
+//         k = Number(k);
+//         let l = 0;
+//         let r = k - 1;
+//         let negativeNumbers = [];
+//         while (r < arr.length) {
+//             let found = false;
+//             for (let i = l; i <= r; i++) {
+//                 if (arr[i] < 0) {
+//                     negativeNumbers.push(arr[i]);
+//                     found = true;
+//                     break;
+//                 }
+//             }
+//             if (!found) {
+//                 negativeNumbers.push(0);
+//             }
+//             l++;
+//             r++;
+//         }
+//         console.log(negativeNumbers);
+//         rl.close();
+//     });
+// });
+
+
+//? 🔹 1. Maximum Vowels in a Substring of Size K
+
+// Problem:
+//? Given a string s and integer k, return the maximum number of vowels in any substring of length k.
+
+//? ✅ Example:
+
+//? Input: s = "abciiidef", k = 3
+//? Output: 3
+//? Explanation: "iii" has 3 vowels.
+
+//? 🔹 2. Check if Any Substring of Size K is a Palindrome
+
+//? Problem:
+//? Given a string s and integer k, check if any substring of length k is a palindrome.
+
+//? ✅ Example:
+
+//? Input: s = "abacdfgdcaba", k = 3
+//? Output: true
+//? Explanation: substring "aba" is a palindrome.
+
+//? 🔹 3. First Unique Character in Every Window of Size K
+
+//? Problem:
+// Given a string s and k, for each substring of size k, find the first unique character. If none, return -1.
+
+//? ✅ Example:
+
+//? Input: s = "aabcdbc", k = 3
+//? Output: ["b", "c", "d", "b", "c"]
+
+//? 🔹 4. Count Distinct Characters in Every Window of Size K
+
+//? Problem:
+//? Given a string s and integer k, count how many distinct characters are in every substring of length k.
+
+//? ✅ Example:
+
+//? Input: s = "abcabc", k = 3
+//? Output: [3, 3, 3, 3]
+
+//? 🔹 5. Find All Anagrams of a Pattern of Size K
+
+//? Problem:
+//? Given a string s and a smaller string p (pattern), find all start indices of substrings in s that are anagrams of p.
+
+//? ✅ Example:
+
+//? Input: s = "cbaebabacd", p = "abc"
+//? Output: [0, 6]
+//? Explanation: "cba" (at 0) and "bac" (at 6) are anagrams of "abc".
+
+//? 🔹 6. Longest Substring with Exactly K Distinct Characters
+
+//? Problem:
+//? Given a string s and integer k, find the length of the longest substring that contains exactly k distinct characters.
+
+//? ✅ Example:
+
+//? Input: s = "aabacbebebe", k = 3
+//? Output: 7
+//? Explanation: "cbebebe" has length 7 with 3 distinct characters.
+
+//? 🔹 7. Check If a Substring of Size K Contains All Unique Characters
+
+//? Problem:
+//? Given s and integer k, return true if any substring of length k has all unique characters.
+
+//? ✅ Example:
+
+//? Input: s = "abac", k = 3
+//? Output: true
+//? Explanation: "bac" has all unique chars.
+
+//? 🔹 8. Smallest Lexicographic Substring of Length K
+
+//? Problem:
+//? Given s and integer k, find the lexicographically smallest substring of length k.
+
+//? ✅ Example:
+
+// Input: s = "azbycxdwe", k = 2
+//? Output: "az"
+
+//? 🔹 9. Substring with Equal Number of Vowels and Consonants in Each Window
+
+//? Problem:
+//? Given s and integer k, return all substrings of length k where vowels = consonants.
+
+//? ✅ Example:
+
+//? Input: s = "abcdeiou", k = 4
+//? Output: ["abci", "cdei"]
+
+//? 🔹 10. First Repeating Character in Each Window of Size K
+
+//? Problem:
+//? For each substring of length k, return the first repeating character. If none, return -1.
+
+//? ✅ Example:
+
+//? Input: s = "aabcdbc", k = 3
+//? Output: ["a", "a", "b", "c", "b"]
+
+//? 🔹 11. Maximum Number of Consonants in Substring of Size K
+
+//? Problem:
+//? Find the substring of size k with the maximum number of consonants.
+
+//? ✅ Example:
+
+//? Input: s = "leetcode", k = 3
+//? Output: 2
+//? Explanation: "tcd" has 2 consonants.
+
+//? 🔹 12. Count Substrings of Size K with At Least One Digit
+
+//? Problem:
+//? Given s and integer k, count how many substrings of length k contain at least one digit.
+
+//? ✅ Example:
+
+//? Output: 5
+//? Input: s = "a1bc23d4", k = 3  
 
