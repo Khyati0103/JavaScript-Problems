@@ -11,6 +11,8 @@
 //? Output: 7
 //? Explanation: Subarray [3, 4] has the maximum sum of 7.  
 
+const { type } = require('os');
+const { stringify } = require('querystring');
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
@@ -266,35 +268,139 @@ const rl = readline.createInterface({
 
 //? 🔹 1. Maximum Vowels in a Substring of Size K
 
-// Problem:
+//? Problem:
 //? Given a string s and integer k, return the maximum number of vowels in any substring of length k.
 
-//? ✅ Example:
+//? Example:
 
 //? Input: s = "abciiidef", k = 3
 //? Output: 3
 //? Explanation: "iii" has 3 vowels.
+
+// rl.question("Enter string : ", (str) => {
+//     rl.question("Enter k : ", (k) => {
+//         k = Number(k);
+//         let vowels = "AEIOUaeiou";
+//         let l = 0;
+//         let r = k - 1;
+//         let maxvowelcount = 0;
+//         let bestSubstring = [];
+
+//         while (r < str.length) {
+//             vowelcount = 0;
+//             for (let i = l; i <= r; i++) {
+//                 let ch = str[i];
+//                 if (vowels.includes(ch)) {
+//                     vowelcount++;
+//                 }
+//             }
+//             if (vowelcount > maxvowelcount) {
+//                 maxvowelcount = vowelcount;
+//                 bestSubstring = [str.substring(l, r + 1)];
+//             } else if (vowelcount === maxvowelcount && maxvowelcount > 0) {
+//                 bestSubstring.push(str.substring(l, r + 1));
+//             }
+
+//             l++;
+//             r++;
+//         }
+//         console.log(maxvowelcount);
+//         console.log("Substring : ", bestSubstring);
+//         rl.close();
+//     });
+// });
+
 
 //? 🔹 2. Check if Any Substring of Size K is a Palindrome
 
 //? Problem:
 //? Given a string s and integer k, check if any substring of length k is a palindrome.
 
-//? ✅ Example:
+//?  Example:
 
 //? Input: s = "abacdfgdcaba", k = 3
 //? Output: true
 //? Explanation: substring "aba" is a palindrome.
 
+// rl.question("Enter String : ", (str) => {
+//     rl.question("Enter k:", (k) => {
+//         function checkPlaindrome(subString) {
+//             let reverseString = "";
+//             for (let i = subString.length - 1; i >= 0; i--) {
+//                 reverseString += subString[i];
+//             }
+//             if (subString === reverseString) {
+//                 return true;
+//             }
+//             return false;
+//         }
+//         let l = 0;
+//         let r = k - 1;
+//         let palindromes = [];
+//         let found = false;
+
+//         while (r < str.length) {
+//             let subString = "";
+//             for (let i = l; i <= r; i++) {
+//                 subString += str[i];
+//             }
+//             if (checkPlaindrome(subString)) {
+//                 palindromes.push(subString);
+//                 if (!found) {
+//                     found = true;
+//                 }
+//             }
+//             l++;
+//             r++;
+//         }
+//         console.log(found,"\n",palindromes);
+//         rl.close();
+//     })
+// })
+
 //? 🔹 3. First Unique Character in Every Window of Size K
 
 //? Problem:
-// Given a string s and k, for each substring of size k, find the first unique character. If none, return -1.
+//? Given a string s and k, for each substring of size k, find the first unique character. If none, return -1.
 
 //? ✅ Example:
 
 //? Input: s = "aabcdbc", k = 3
 //? Output: ["b", "c", "d", "b", "c"]
+
+// rl.question("Enter string : ", (str) => {
+//     rl.question("Enter k : ", (k) => {
+//         function firstUniqueCharacter(subString) {
+//             // let uniqueCharacters = [];
+//             for (let i = 0; i < subString.length; i++) {
+//                 let ch = subString[i];
+//                 if (subString.indexOf(ch) === subString.lastIndexOf(ch)) {
+//                     return ch;
+//                     break;
+//                 }
+//             }
+
+//             return null;
+//         }
+//         let l = 0;
+//         let r = k - 1;
+//         let uniqueCharacters = [];
+//         while (r < str.length) {
+//             let subString = "";
+//             for (let i = l; i <= r; i++) {
+//                 subString += str[i];
+//             }
+//             let uniquevalue = firstUniqueCharacter(subString);
+//             if (uniquevalue !== null) {
+//                 uniqueCharacters.push(uniquevalue);
+//             };
+//             l++;
+//             r++;
+//         }
+//         console.log(uniqueCharacters);
+//         rl.close();
+//     })
+// })
 
 //? 🔹 4. Count Distinct Characters in Every Window of Size K
 
@@ -305,6 +411,39 @@ const rl = readline.createInterface({
 
 //? Input: s = "abcabc", k = 3
 //? Output: [3, 3, 3, 3]
+
+// rl.question("Enter String : ", (str) => {
+//     rl.question("Enter k : ", (k) => {
+//         function countDistinctCharacter(subString) {
+//             subString = [...new Set(subString)].join("");
+//             return subString.length;
+//             // let count = 0;
+//             // for (let i = 0; i < subString.length; i++) {
+//             //     let ch = subString[i];
+//             //     if (subString.indexOf(ch) === subString.lastIndexOf(ch)) {
+//             //         count++;
+//             //     }
+//             // }
+//             // return count;
+//         }
+//         let l = 0;
+//         let r = k - 1;
+//         let uniqueCharacterscount = [];
+//         while (r < str.length) {
+//             let subString = "";
+//             for (let i = l; i <= r; i++) {
+//                 subString += str[i];
+//             }
+//             let count = countDistinctCharacter(subString);
+//             uniqueCharacterscount.push(count);
+//             l++;
+//             r++;
+//         }
+//         console.log(uniqueCharacterscount);
+//         rl.close();
+//     });
+// });
+
 
 //? 🔹 5. Find All Anagrams of a Pattern of Size K
 
@@ -317,16 +456,48 @@ const rl = readline.createInterface({
 //? Output: [0, 6]
 //? Explanation: "cba" (at 0) and "bac" (at 6) are anagrams of "abc".
 
-//? 🔹 6. Longest Substring with Exactly K Distinct Characters
+// rl.question("Enter String : ", (str) => {
+//     rl.question("Enter smaller string(p)  :  ", (str1) => {
+//         k = str1.length;
+//         function checkAngram(subString, str1) {
+//             if (subString.split("").sort().join("") === str1.split("").sort().join("")) {
+//                 return true;
+//             }
+//             return false;
 
-//? Problem:
-//? Given a string s and integer k, find the length of the longest substring that contains exactly k distinct characters.
+//         }
+//         let l = 0;
+//         let r = k - 1;
+//         let indexofAnagrams = [];
 
-//? ✅ Example:
+//         while (r < str.length) {
+//             let subString = "";
+//             for (let i = l; i <= r; i++) {
+//                 subString += str[i];
+//             }
+//             if (checkAngram(subString, str1)) {
+//                 indexofAnagrams.push(l);
+//             }
+//             l++;
+//             r++;
+//         }
+//         console.log(indexofAnagrams);
+//         rl.close();
+//     })
+// })
 
-//? Input: s = "aabacbebebe", k = 3
-//? Output: 7
-//? Explanation: "cbebebe" has length 7 with 3 distinct characters.
+//! 🔹 6. Longest Substring with Exactly K Distinct Characters (Problem of Variable window)
+
+//! Problem:
+//! Given a string s and integer k, find the length of the longest substring that contains exactly k distinct characters.
+
+//!  Example:
+
+//! Input: s = "aabacbebebe", k = 3
+//! Output: 7
+//! Explanation: "cbebebe" has length 7 with 3 distinct characters.
+
+
 
 //? 🔹 7. Check If a Substring of Size K Contains All Unique Characters
 
@@ -339,35 +510,163 @@ const rl = readline.createInterface({
 //? Output: true
 //? Explanation: "bac" has all unique chars.
 
+// rl.question("Enter String : ", (str) => {
+//     rl.question("Enter k : ", (k) => {
+//         k = Number(k);
+//         function uniqueCharacters(subString, k) {
+//             let uniqueSubstring = [...new Set(subString)].join("");
+//             if (uniqueSubstring.length === k) {
+//                 return true;
+//             }
+//             return false;
+//         }
+//         let l = 0;
+//         let r = k - 1;
+//         let uniqueCharactersArray = [];
+//         let found = false;
+
+//         while (r < str.length) {
+//             let subString = "";
+//             for (let i = l; i <= r; i++) {
+//                 subString += str[i];
+//             }
+//             if (uniqueCharacters(subString, k)) {
+//                 uniqueCharactersArray.push(subString);
+//                 if (!found) {
+//                     found = true;
+//                 }
+//             }
+//             l++;
+//             r++;
+//         }
+//         console.log(found, "\n", uniqueCharactersArray);
+//         rl.close();
+
+//     })
+// })
+
 //? 🔹 8. Smallest Lexicographic Substring of Length K
 
 //? Problem:
 //? Given s and integer k, find the lexicographically smallest substring of length k.
 
-//? ✅ Example:
+//? Example:
 
-// Input: s = "azbycxdwe", k = 2
+//? Input: s = "azbycxdwe", k = 2
 //? Output: "az"
+
+// rl.question("Enter String : ", (str) => {
+//     rl.question("Enter K :", (k) => {
+//         k = Number(k);
+//         let l = 0;
+//         let r = k - 1;
+//         let subStringsArray = [];
+//         while (r < str.length) {
+//             let SubString = "";
+//             for (let i = l; i <= r; i++) {
+//                 SubString += str[i];
+//             }
+//             subStringsArray.push(SubString);
+//             l++;
+//             r++;
+//         }
+//         subStringsArray = subStringsArray.sort((a, b) => a.localeCompare(b));
+//         console.log(`"${subStringsArray[0]}"`);
+//         rl.close();
+//     })
+// })
 
 //? 🔹 9. Substring with Equal Number of Vowels and Consonants in Each Window
 
 //? Problem:
 //? Given s and integer k, return all substrings of length k where vowels = consonants.
 
-//? ✅ Example:
+//?  Example:
 
 //? Input: s = "abcdeiou", k = 4
 //? Output: ["abci", "cdei"]
+
+// rl.question("Enter String :", (str) => {
+//     rl.question("Enter k : ", (k) => {
+//         k = Number(k);
+//         function countVowelsConsonants(subString) {
+//             let vowels = "AEIOUaeiou";
+//             let vowelsCount = 0;
+//             let consonantsCount = 0;
+//             for (let ch of subString) {
+//                 if (!vowels.includes(ch)) {
+//                     consonantsCount++;
+//                 }
+//                 else {
+//                     vowelsCount++;
+//                 }
+//             }
+//             if (vowelsCount === consonantsCount) {
+//                 return true;
+//             }
+//             return false;
+//         }
+//         let l = 0;
+//         let r = k - 1;
+//         let output = [];
+//         while (r < str.length) {
+//             let subString = str.substring(l, r + 1);
+//             if (countVowelsConsonants(subString)) {
+//                 output.push(subString);
+//             }
+//             l++;
+//             r++;
+//         }
+//         console.log(output);
+//         rl.close();
+//     })
+// })
+
 
 //? 🔹 10. First Repeating Character in Each Window of Size K
 
 //? Problem:
 //? For each substring of length k, return the first repeating character. If none, return -1.
 
-//? ✅ Example:
+//?  Example:
 
 //? Input: s = "aabcdbc", k = 3
 //? Output: ["a", "a", "b", "c", "b"]
+
+rl.question("Enter String : ", (str) => {
+    rl.question("Enter k : ", (k) => {
+        k = Number(k);
+        function FirstReatingCharacter(SubString) {
+            for (let ch of SubString) {
+                if (SubString.indexOf(ch) !== SubString.lastIndexOf(ch)) {
+                    return ch;
+                }
+            }
+
+            // let fq = {};
+            // for (let ch of SubString) {
+            //     if (fq[ch]) {
+            //         return ch;
+            //     }
+            //     fq[ch] = 1;
+            // }
+
+            return -1;
+        }
+        let l = 0;
+        let r = k - 1;
+        let firstReatingCharacters = [];
+        while (r < str.length) {
+            let SubString = str.substring(l, r + 1);
+            let ch = FirstReatingCharacter(SubString);
+            firstReatingCharacters.push(ch);
+            l++;
+            r++;
+        }
+        console.log(firstReatingCharacters);
+        rl.close();
+    })
+})
 
 //? 🔹 11. Maximum Number of Consonants in Substring of Size K
 
@@ -387,6 +686,6 @@ const rl = readline.createInterface({
 
 //? ✅ Example:
 
+//? Input: s = "a1bc23d4", k = 3
 //? Output: 5
-//? Input: s = "a1bc23d4", k = 3  
 
