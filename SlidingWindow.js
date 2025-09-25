@@ -11,47 +11,62 @@
 //? Output: 7
 //? Explanation: Subarray [3, 4] has the maximum sum of 7.  
 
-const { type } = require('os');
-const { stringify } = require('querystring');
+
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-// rl.question("Enter array : ", (elements) => {
-//     arr = elements.split(" ").map(Number);
-//     rl.question("Enter k : ", (k) => {
-//         k = parseInt(k);
-//         let l = 0;
-//         let r = k - 1;
-//         let sum = 0;
-//         if (k < 0 || k > arr.length) {
-//             console.log("Enter proper k.");
-//             rl.close();
-//             return;
-//         }
+rl.question("Enter array : ", (elements) => {
+    arr = elements.split(" ").map(Number);
+    rl.question("Enter k : ", (k) => {
+        k = parseInt(k);
+        let l = 0;
+        let r = k - 1;
+        let sum = 0;
+        let bestArray = [];
+        if (k < 0 || k > arr.length) {
+            console.log("Enter proper k.");
+            rl.close();
+            return;
+        }
 
 
-//         for (let i = l; i <= r; i++) {
-//             sum += arr[i];
-//         }
-//         let maxsum = sum;
+        // for (let i = l; i <= r; i++) {
+        //     sum += arr[i];
+        // }
+        let maxsum = -Infinity;
 
-//         while (r < arr.length - 1) {
-//             sum = sum - arr[l];
-//             l++;
-//             r++;
-//             sum = sum + arr[r];
-//             if (sum > maxsum) {
-//                 maxsum = sum;
-//             }
-//         }
+        while (r < arr.length) {
+            let sum = 0;
+            for (let i = l; i <= r; i++) {
+                sum += arr[i];
+            }
+            if (sum > maxsum) {
+                maxsum = sum;
+                bestArray = [arr.slice(l, r + 1)];
+            }
+            else if (maxsum === sum && maxsum > 0) {
+                bestArray.push(arr.slice(l, r + 1));
+            }
+            l++;
+            r++;
+            // sum = sum - arr[l];
+            // l++;
+            // r++;
+            // sum = sum + arr[r];
+            // if (sum > maxsum) {
+            //     maxsum = sum;
+            // }
+            // bestSubstring.push(arr.slice(l, r + 1));
+        }
 
-//         console.log(`Max Sum is ${maxsum}`);
-//         rl.close();
-//     })
+        console.log(`Max Sum is ${maxsum}`);
+        console.log(bestArray);
+        rl.close();
+    })
 
-// });
+});
 
 
 //? 1. Maximum Average Subarray
@@ -417,14 +432,6 @@ const rl = readline.createInterface({
 //         function countDistinctCharacter(subString) {
 //             subString = [...new Set(subString)].join("");
 //             return subString.length;
-//             // let count = 0;
-//             // for (let i = 0; i < subString.length; i++) {
-//             //     let ch = subString[i];
-//             //     if (subString.indexOf(ch) === subString.lastIndexOf(ch)) {
-//             //         count++;
-//             //     }
-//             // }
-//             // return count;
 //         }
 //         let l = 0;
 //         let r = k - 1;
@@ -486,7 +493,7 @@ const rl = readline.createInterface({
 //     })
 // })
 
-//! 🔹 6. Longest Substring with Exactly K Distinct Characters (Problem of Variable window)
+//!  6. Longest Substring with Exactly K Distinct Characters (Problem of Variable window)
 
 //! Problem:
 //! Given a string s and integer k, find the length of the longest substring that contains exactly k distinct characters.
@@ -504,7 +511,7 @@ const rl = readline.createInterface({
 //? Problem:
 //? Given s and integer k, return true if any substring of length k has all unique characters.
 
-//? ✅ Example:
+//?  Example:
 
 //? Input: s = "abac", k = 3
 //? Output: true
@@ -633,59 +640,114 @@ const rl = readline.createInterface({
 //? Input: s = "aabcdbc", k = 3
 //? Output: ["a", "a", "b", "c", "b"]
 
-rl.question("Enter String : ", (str) => {
-    rl.question("Enter k : ", (k) => {
-        k = Number(k);
-        function FirstReatingCharacter(SubString) {
-            for (let ch of SubString) {
-                if (SubString.indexOf(ch) !== SubString.lastIndexOf(ch)) {
-                    return ch;
-                }
-            }
+// rl.question("Enter String : ", (str) => {
+//     rl.question("Enter k : ", (k) => {
+//         k = Number(k);
+//         function FirstReatingCharacter(SubString) {
+//             for (let ch of SubString) {
+//                 if (SubString.indexOf(ch) !== SubString.lastIndexOf(ch)) {
+//                     return ch;
+//                 }
+//             }
 
-            // let fq = {};
-            // for (let ch of SubString) {
-            //     if (fq[ch]) {
-            //         return ch;
-            //     }
-            //     fq[ch] = 1;
-            // }
+//             // let fq = {};
+//             // for (let ch of SubString) {
+//             //     if (fq[ch]) {
+//             //         return ch;
+//             //     }
+//             //     fq[ch] = 1;
+//             // }
 
-            return -1;
-        }
-        let l = 0;
-        let r = k - 1;
-        let firstReatingCharacters = [];
-        while (r < str.length) {
-            let SubString = str.substring(l, r + 1);
-            let ch = FirstReatingCharacter(SubString);
-            firstReatingCharacters.push(ch);
-            l++;
-            r++;
-        }
-        console.log(firstReatingCharacters);
-        rl.close();
-    })
-})
+//             return -1;
+//         }
+//         let l = 0;
+//         let r = k - 1;
+//         let firstReatingCharacters = [];
+//         while (r < str.length) {
+//             let SubString = str.substring(l, r + 1);
+//             let ch = FirstReatingCharacter(SubString);
+//             firstReatingCharacters.push(ch);
+//             l++;
+//             r++;
+//         }
+//         console.log(firstReatingCharacters);
+//         rl.close();
+//     })
+// })
 
 //? 🔹 11. Maximum Number of Consonants in Substring of Size K
 
 //? Problem:
 //? Find the substring of size k with the maximum number of consonants.
 
-//? ✅ Example:
+//?  Example:
 
 //? Input: s = "leetcode", k = 3
 //? Output: 2
 //? Explanation: "tcd" has 2 consonants.
+
+// rl.question("Enter String : ", (str) => {
+//     rl.question("Enter K : ", (k) => {
+//         k = Number(k);
+//         let l = 0;
+//         let r = k - 1;
+//         let maxcount = 0;
+//         let vowels = "aeiouAEIOU";
+//         let bestSubstring = [];
+//         while (r < str.length) {
+//             let consonantsCount = 0;
+//             for (let i = l; i <= r;9 i++) {
+//                 let ch = str[i];
+//                 if (!vowels.includes(ch)) {
+//                     consonantsCount++;
+//                 }
+//             }
+//             if (consonantsCount > maxcount) {
+//                 maxcount = consonantsCount;
+//                 bestSubstring = [str.substring(l, r + 1)];
+//             }
+//             else if (consonantsCount === maxcount && maxcount > 0) {
+//                 bestSubstring.push(str.substring(l, r + 1));
+//             }
+//             l++;
+//             r++;
+//         }
+//         console.log(maxcount, "\n", bestSubstring);
+//         rl.close();
+//     })
+// })
 
 //? 🔹 12. Count Substrings of Size K with At Least One Digit
 
 //? Problem:
 //? Given s and integer k, count how many substrings of length k contain at least one digit.
 
-//? ✅ Example:
+//?  Example:
 
 //? Input: s = "a1bc23d4", k = 3
 //? Output: 5
 
+// rl.question("Enter String :", (str) => {
+//     rl.question("Enter k :", (k) => {
+//         k = Number(k);
+//         let l = 0;
+//         let r = k - 1;
+//         let outputSubstring = [];
+//         let count = 0;
+//         let digits = "0123456789";
+//         while (r < str.length) {
+//             for (let i = l; i <= r; i++) {
+//                 let ch = str[i];
+//                 if (digits.includes(ch)) {
+//                     count++;
+//                     outputSubstring.push(str.substring(l, r + 1));
+//                     break;
+//                 }
+//             }
+//             l++;
+//             r++;
+//         }
+//         console.log(count, "\n", outputSubstring);
+//         rl.close();
+//     })
+// })
